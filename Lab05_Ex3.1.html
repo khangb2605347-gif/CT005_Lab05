@@ -1,62 +1,198 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lợi ích của công nghệ số</title>
+    <title>Trang giới thiệu cá nhân</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             padding: 30px;
-            font-family: Arial, sans-serif;
+            font-family: "Times New Roman", serif;
             background: #f0f6ff;
             color: #073b7a;
-            font-family: "Times New Roman", serif;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
             background: white;
-            padding: 30px;
             border-radius: 20px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
         }
 
-        h1 {
+        /* ===== PHẦN GIỚI THIỆU ===== */
+        .hero {
+            background: linear-gradient(135deg, #06458f, #2d8cff);
+            color: white;
+            text-align: center;
+            padding: 50px 30px;
+        }
+
+        .hero h1 {
+            margin: 0 0 15px;
+            font-size: 40px;
+        }
+
+        .hero p {
+            margin: 8px 0;
+            font-size: 19px;
+        }
+
+        .intro {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .intro h2 {
+            color: #06458f;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: auto;
+            color: #444;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .info-box {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .info-item {
+            background: #f0f6ff;
+            border-radius: 15px;
+            padding: 20px 30px;
+            min-width: 220px;
+            transition: 0.3s;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .info-item h3 {
+            margin: 0 0 10px;
+            color: #06458f;
+        }
+
+        .info-item p {
+            margin: 0;
+            color: #333;
+            font-size: 17px;
+        }
+
+        /* ===== SẢN PHẨM ===== */
+        .products {
+            padding: 40px;
+            background: #f8fbff;
+        }
+
+        .products > h2 {
             text-align: center;
             color: #06458f;
-            margin-bottom: 30px;
-            font-size: 32px;
+            font-size: 30px;
+            margin-bottom: 35px;
         }
 
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card h3 {
+            color: #06458f;
+            font-size: 25px;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .product-card p {
+            color: #444;
+            font-size: 17px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* ===== PDF ===== */
+        .pdf-box {
+            text-align: center;
+            padding: 25px;
+            background: #f0f6ff;
+            border-radius: 15px;
+        }
+
+        .pdf-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .pdf-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #06458f;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        .pdf-button:hover {
+            background: #2d8cff;
+            transform: scale(1.05);
+        }
+
+        /* ===== PNG ===== */
         .infographic {
             text-align: center;
-            margin-bottom: 40px;
         }
 
         .infographic img {
             width: 100%;
             max-width: 800px;
             height: auto;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 2px solid #d5e7f8;
+            transition: 0.3s;
         }
 
-        .video-section {
-            text-align: center;
+        .infographic img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .video-section h2 {
-            color: #06458f;
-            margin-bottom: 20px;
-        }
-
+        /* ===== VIDEO ===== */
         .video-container {
             position: relative;
             width: 100%;
@@ -78,70 +214,212 @@
             border: none;
         }
 
+        .copyright {
+            font-size: 14px !important;
+            font-style: italic;
+            color: #666 !important;
+            text-align: center;
+            margin-top: 12px;
+        }
+
         .description {
             margin-top: 20px;
             font-size: 17px;
             line-height: 1.6;
             color: #333;
+            text-align: center;
         }
-        .copyright {
-    font-size: 14px;
-    font-style: italic;
-    color: #666;
-    text-align: center;
-    margin-top: 8px;
-}
 
+        /* ===== FOOTER ===== */
         footer {
             text-align: center;
-            margin-top: 30px;
-            color: #666;
+            padding: 25px;
+            background: #06458f;
+            color: white;
             font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .intro,
+            .products {
+                padding: 25px 15px;
+            }
+
+            .info-item {
+                width: 100%;
+            }
+
+            .product-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-    <h1>LỢI ÍCH CỦA CÔNG NGHỆ SỐ</h1>
+    <!-- ===== GIỚI THIỆU CÁ NHÂN ===== -->
+    <section class="hero">
+        <h1>GIỚI THIỆU CÁ NHÂN</h1>
+        <p>🎨 Sinh viên ngành Truyền thông đa phương tiện</p>
+        <p>💻 Sáng tạo - Công nghệ - Truyền thông</p>
+    </section>
 
-    <!-- Infographic -->
-    <div class="infographic">
-        <img
-            src="Lab05_Ex2.1.png"
-            alt="Infographic về lợi ích của công nghệ số">
-            <p class="copyright"> Nguồn: Infographic tạo bởi Canva AI, hình ảnh từ Unsplash (Unsplash License). </p>
-    </div>
+    <section class="intro">
 
-    <!-- Video YouTube -->
-    <div class="video-section">
+        <h2>Xin chào!</h2>
 
-        <h2>🎬 Video về công nghệ số</h2>
-
-        <div class="video-container">
-            <iframe
-                src="https://www.youtube.com/embed/e4U4xlGS0o4"
-                title="Video về công nghệ số"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
-        <p class="copyright"> Nguồn: Video tạo bởi Capcut, tài liệu từ Pexels/FreeSound(CC0) </p>
-        <p class="description">
-            Video giới thiệu những lợi ích và vai trò của công nghệ số
-            trong học tập và cuộc sống.
+        <p class="intro-text">
+            Tôi là một sinh viên ngành Truyền thông đa phương tiện.
+            Tôi quan tâm đến thiết kế, sáng tạo nội dung và ứng dụng
+            công nghệ số trong học tập cũng như trong cuộc sống.
+            Trang web này được tạo nhằm giới thiệu thông tin cá nhân
+            và trình bày một số sản phẩm mà tôi đã thực hiện.
         </p>
-</div>
 
-    </div>
+        <div class="info-box">
 
+            <div class="info-item">
+                <h3>👤 Họ và tên</h3>
+                <p>Lê Nguyễn Nhất Khang</p>
+            </div>
+
+            <div class="info-item">
+                <h3>🎓 Ngành học</h3>
+                <p>Truyền thông đa phương tiện</p>
+            </div>
+
+            <div class="info-item">
+                <h3>🏫 Lớp</h3>
+                <p>DI26D1A2</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== SẢN PHẨM ===== -->
+    <section class="products">
+
+        <h2>🎨 SẢN PHẨM CỦA TÔI</h2>
+
+
+        <!-- SẢN PHẨM 1: PDF -->
+        <div class="product-card">
+
+            <h3>📄 Sản phẩm 1 - File PDF</h3>
+
+            <p>
+                Đây là sản phẩm PDF được thực hiện trong quá trình học tập.
+                Bạn có thể nhấn nút bên dưới để mở và xem file.
+            </p>
+
+            <div class="pdf-box">
+
+                <div class="pdf-icon">📄</div>
+
+                <p>
+                    <strong>Tài liệu PDF</strong>
+                </p>
+
+                <!-- ĐỔI "sanpham.pdf" thành tên file PDF thật của bạn -->
+                <a
+                    class="pdf-button"
+                    href="Lab05_Ex1.2.pdf"
+                    target="_blank">
+                    Mở file PDF
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SẢN PHẨM 2: PNG -->
+        <div class="product-card">
+
+            <h3>🖼️ Sản phẩm 2 - Infographic PNG</h3>
+
+            <p>
+                Infographic trình bày những lợi ích và vai trò
+                của công nghệ số trong học tập và cuộc sống.
+            </p>
+
+            <div class="infographic">
+
+                <img
+                    src="Lab05_Ex2.1.png"
+                    alt="Infographic về lợi ích của công nghệ số">
+
+                <p class="copyright">
+                    Nguồn: Infographic tạo bởi Canva AI,
+                    hình ảnh từ Unsplash (Unsplash License).
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SẢN PHẨM 3: YOUTUBE -->
+        <div class="product-card">
+
+            <h3>🎬 Sản phẩm 3 - Video YouTube</h3>
+
+            <p>
+                Video giới thiệu những lợi ích và vai trò
+                của công nghệ số trong học tập và cuộc sống.
+            </p>
+
+            <div class="video-container">
+
+                <iframe
+                    src="https://www.youtube.com/embed/e4U4xlGS0o4"
+                    title="Video về công nghệ số"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+            <p class="copyright">
+                Nguồn: Video tạo bởi CapCut,
+                tài liệu từ Pexels/FreeSound (CC0).
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
     <footer>
-        Nguồn AI: ChatGPT – hỗ trợ viết mã HTML/CSS để hiển thị Infographic và video YouTube trên trang web.
+
+        Nguồn AI: ChatGPT – hỗ trợ viết mã HTML/CSS
+        để phát triển trang web giới thiệu thông tin cá nhân
+        và hiển thị các sản phẩm.
+
     </footer>
 
 </div>
 
 </body>
 </html>
+```
